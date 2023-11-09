@@ -13,6 +13,7 @@ import FileSaver from 'file-saver'
 interface SingleImageCarouselCardProps {
   previewLink?: string;
   link?: string;
+  fileSize?: number;
   timeTaken?: number;
   loading?: boolean;
 }
@@ -21,9 +22,10 @@ export default function SingleImageCarouselCard({
   previewLink,
   timeTaken,
   link,
-  loading,
+  fileSize,
 }: SingleImageCarouselCardProps) {
   const fileName = (previewLink?.split("/").pop() ?? "image.png").split(".")[0];
+  const readableFileSize = fileSize ? `${(fileSize / 1024).toFixed(2)}KB` : "0KB";
   return (
     <Card
       withBorder
@@ -47,7 +49,7 @@ export default function SingleImageCarouselCard({
           className="font-extrabold text-2xl text-white uppercase"
           order={5}
         >
-          It took {Number((Math.ceil(timeTaken ?? 0)/1000).toFixed(2))}s to process.
+          It took {Number((Math.ceil(timeTaken ?? 0)/1000).toFixed(2))}s to process {readableFileSize}.
         </Title>
         <Title
           mt="xs"
