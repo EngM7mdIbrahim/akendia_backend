@@ -11,17 +11,12 @@ export default function Landing() {
   const imagesInsights = useMemo(() => {
     let currTimeTaken = 0;
     images?.forEach((element: any) => {
-      console.log(element);
       currTimeTaken += Math.ceil(element.timeTaken);
     });
-    console.log("Time taken: ", currTimeTaken);
     return {
       count: images?.length ?? 0,
       time: Number((currTimeTaken / 1000).toFixed(2)),
     };
-  }, [images]);
-  useEffect(() => {
-    console.log(images);
   }, [images]);
   return (
     <AppLayout center headerText="App Dashboard">

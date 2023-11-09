@@ -5,8 +5,9 @@ import { IUploadCroppedImageResp } from "../types/responses/ImageAddFrameRespons
 import SingleImageCarouselCard from "./SignleImageCarouselCard";
 import { IconSparkles } from "@tabler/icons-react";
 import { useNavigate } from "react-router";
+import { ImageInsightResp } from "../types/responses/ImageInsight";
 interface ImagesCarouselProps {
-  images: IUploadCroppedImageResp[];
+  images?: ImageInsightResp[];
   loading?: boolean;
 }
 

@@ -14,6 +14,6 @@ export const DEFAULT_CROP_POSITION = {
 };
 
 export const apiClient = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: process.env.REACT_APP_API_BASE || 'http://localhost:8080',
    
 })
