@@ -1,16 +1,21 @@
-import { AppShell, Box, ScrollArea, Title } from "@mantine/core";
+import { ActionIcon, AppShell, Box, ScrollArea, Title } from "@mantine/core";
+import { useNavigate } from "react-router";
+import { IconArrowLeft } from "@tabler/icons-react";
 interface AppLayoutProps {
   children: React.ReactNode;
   center?: boolean;
   sideBar?: React.ReactNode;
   headerText?: React.ReactNode;
+  showBackButton?: boolean;
 }
 export default function AppLayout({
   children,
   center = false,
   sideBar,
   headerText,
+  showBackButton = false,
 }: AppLayoutProps) {
+  const router = useNavigate();
   return (
     <AppShell
       navbar={!!sideBar ? { width: 300, breakpoint: "md" } : undefined}
@@ -24,6 +29,20 @@ export default function AppLayout({
             p="sm"
             className="flex justify-start items-center w-full h-full gap-5"
           >
+            {showBackButton && (
+              <ActionIcon
+                onClick={() => {
+                  router(-1);
+                }}
+              >
+                <IconArrowLeft
+                  size={30}
+                  onClick={() => {
+                    router("/");
+                  }}
+                />
+              </ActionIcon>
+            )}
             <Title order={1}> {headerText}</Title>
           </Box>
         </AppShell.Header>

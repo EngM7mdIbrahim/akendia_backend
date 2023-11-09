@@ -6,17 +6,25 @@ import Cropper from "react-easy-crop";
 import ControlsSideBar from "../components/ControlsSideBar";
 import { IImageCropState } from "../types/ImageCropState";
 import { IImageSize } from "../types/ImageSize";
-import { useNavigate } from "react-router";
+import FileSaver from 'file-saver'
 import editImage from "../utils/edit-image";
 import AppModal from "../components/AppModal";
 import useImageSelectedGuard from "../hooks/useImageSelectedGuard";
+import {
+  DEFAULT_CROP_POSITION,
+  DEFAULT_CROP_SIZE,
+  DEFAULT_ROTATION,
+  DEFAULT_ZOOM,
+} from "../constants/settings";
+import useUploadCroppedImage from "../hooks/requests/useUploadCroppedImage";
+import { showNotification } from "@mantine/notifications";
+import { IUploadCroppedImageResp } from "../types/responses/ImageAddFrameResponseData";
 
 const INIT_STATE = {
-  crop: { x: 0, y: 0 },
-  cropSize: { width: 300, height: 300 },
-  zoom: 1,
-  rotation: 0,
-  aspect: 1,
+  crop: DEFAULT_CROP_POSITION,
+  cropSize: DEFAULT_CROP_SIZE,
+  zoom: DEFAULT_ZOOM,
+  rotation: DEFAULT_ROTATION,
 };
 
 export default function EditImage() {
@@ -33,6 +41,9 @@ export default function EditImage() {
     image: null,
     loading: false,
   });
+  const [frameImage, setFrameImage] = useState<IUploadCroppedImageResp | null>(
+    null
+  );
 
   const handleCropComplete = useCallback((_: any, croppedAreaPixels: any) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -40,15 +51,27 @@ export default function EditImage() {
 
   const handleShowImage = useCallback(async () => {
     setCroppedImage({ image: null, loading: true });
-    console.log("Cropped Area Pixels", croppedAreaPixels);
     const transformedImage = await editImage(
       imageBlobURL,
       croppedAreaPixels!,
       imageControls.rotation
     );
-    console.log("Transformed Image", transformedImage);
     setCroppedImage({ image: transformedImage, loading: false });
   }, [imageControls, croppedAreaPixels]);
+  const handleUploadImage = useUploadCroppedImage({
+    onSuccess: (data) => {
+      setCroppedImage({ image: null, loading: false });
+      setFrameImage(data);
+    },
+    onError(err) {
+      console.log(err);
+      showNotification({
+        title: "Error",
+        message: "Error While uploading image",
+        color: "red",
+      });
+    },
+  });
 
   return (
     <AppLayout
@@ -70,12 +93,31 @@ export default function EditImage() {
     >
       <AppModal
         onClose={() => {
+          setFrameImage(null);
+        }}
+        onYes={() => {
+          FileSaver.saveAs(frameImage?.link ?? "", `${fileName}.png`)
+          setFrameImage(null);
+        }}
+        loading={false}
+        opened={!!frameImage}
+        modalText={`Here is your framed image! It took around ${Math.ceil(
+          frameImage?.timeTaken ?? 0
+        )} ms to process it. Do you want to download it ?`}
+      >
+        <Image src={frameImage?.link ?? ""} />
+      </AppModal>
+      <AppModal
+        onClose={() => {
           setCroppedImage({ image: null, loading: false });
         }}
         onYes={() => {
-          ///
+          handleUploadImage.mutate({
+            imageData: croppedImage.image,
+            fileName,
+          });
         }}
-        loading={false}
+        loading={handleUploadImage.isLoading}
         opened={!!croppedImage.image}
         modalText="Here is the image you cropped. Do you want to publish it ?"
       >

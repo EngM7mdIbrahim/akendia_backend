@@ -148,11 +148,19 @@ export default function ControlsSideBar({
         />
       </Box>
       <Box className="flex flex-col gap-2 ">
+        <Button
+          variant="outline"
+          onClick={() => {
+            router("/");
+          }}
+        >
+          Show Home
+        </Button>
         <Button variant="outline" onClick={onReset}>
           Reset Edits
         </Button>
         <Button onClick={onPublish}>Show Edited Image</Button>
-        <Button onClick={() => router("/")} color="red">
+        <Button onClick={() => router("/add-image")} color="red">
           Select another image
         </Button>
       </Box>

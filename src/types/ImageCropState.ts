@@ -3,5 +3,4 @@ export interface IImageCropState {
     cropSize: { width: number, height: number },
     zoom: number,
     rotation: number,
-    aspect: number,
   }
