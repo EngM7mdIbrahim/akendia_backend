@@ -2,9 +2,7 @@ import {
   Box,
   Button,
   NumberInput,
-  SegmentedControl,
   Slider,
-  TextInput,
   Title,
 } from "@mantine/core";
 import { IImageCropState } from "../types/ImageCropState";

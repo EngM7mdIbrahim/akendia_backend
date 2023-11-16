@@ -2,9 +2,6 @@ import {
   Button,
   Card,
   Overlay,
-  Paper,
-  Skeleton,
-  Text,
   Title,
   rem,
 } from "@mantine/core";

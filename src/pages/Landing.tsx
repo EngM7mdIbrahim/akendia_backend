@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { ImagesCarousel } from "../components/ImagesCraousel";
 import ImageInsights from "../components/ImagesInsights";
 import useGetInsights from "../hooks/requests/useGetInsights";

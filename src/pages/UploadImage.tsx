@@ -1,4 +1,4 @@
-import { Box, Center, Group, Image, Text, Title, rem } from "@mantine/core";
+import { Center, Group, Image, Text, Title, rem } from "@mantine/core";
 import AppLayout from "../layouts/AppLayout";
 import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { IconUpload, IconX, IconPhoto } from "@tabler/icons-react";

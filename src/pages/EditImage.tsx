@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { useAppSelector } from "../hooks/useStore";
 import AppLayout from "../layouts/AppLayout";
-import { Box, Card, Center, Image, Text, Title } from "@mantine/core";
+import { Card, Image } from "@mantine/core";
 import Cropper from "react-easy-crop";
 import ControlsSideBar from "../components/ControlsSideBar";
 import { IImageCropState } from "../types/ImageCropState";

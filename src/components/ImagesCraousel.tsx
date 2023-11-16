@@ -1,7 +1,6 @@
 import { Carousel } from "@mantine/carousel";
 import { randomId, useMediaQuery } from "@mantine/hooks";
 import { useMantineTheme, rem, Center, Title, Button } from "@mantine/core";
-import { IUploadCroppedImageResp } from "../types/responses/ImageAddFrameResponseData";
 import SingleImageCarouselCard from "./SignleImageCarouselCard";
 import { IconSparkles } from "@tabler/icons-react";
 import { useNavigate } from "react-router";
