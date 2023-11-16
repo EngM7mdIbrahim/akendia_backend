@@ -11,9 +11,6 @@ dependencies:
   '@mantine/core':
     specifier: ^7.2.1
     version: 7.2.1(@mantine/hooks@7.2.1)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-  '@mantine/dates':
-    specifier: ^7.2.1
-    version: 7.2.1(@mantine/core@7.2.1)(@mantine/hooks@7.2.1)(dayjs@1.11.10)(react-dom@18.2.0)(react@18.2.0)
   '@mantine/dropzone':
     specifier: ^7.2.1
     version: 7.2.1(@mantine/core@7.2.1)(@mantine/hooks@7.2.1)(react-dom@18.2.0)(react@18.2.0)
@@ -62,15 +59,9 @@ dependencies:
   axios:
     specifier: ^1.6.1
     version: 1.6.1
-  dayjs:
-    specifier: ^1.11.10
-    version: 1.11.10
   file-saver:
     specifier: ^2.0.5
     version: 2.0.5
-  form-data:
-    specifier: ^4.0.0
-    version: 4.0.0
   jimp:
     specifier: ^0.22.10
     version: 0.22.10
@@ -2471,23 +2462,6 @@ packages:
       - '@types/react'
     dev: false
 
-  /@mantine/dates@7.2.1(@mantine/core@7.2.1)(@mantine/hooks@7.2.1)(dayjs@1.11.10)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-wOLbWU0DJGG3kC7GdoIXdUSvCq9ggFjyDfOuHwRLa0rpWoytsgn9X59ab/4kO341tcqvkMa4F9Yq90Vhyj//rA==}
-    peerDependencies:
-      '@mantine/core': 7.2.1
-      '@mantine/hooks': 7.2.1
-      dayjs: ^1.10.5
-      react: ^18.2.0
-      react-dom: ^18.2.0
-    dependencies:
-      '@mantine/core': 7.2.1(@mantine/hooks@7.2.1)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.2.1(react@18.2.0)
-      clsx: 2.0.0
-      dayjs: 1.11.10
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@mantine/dropzone@7.2.1(@mantine/core@7.2.1)(@mantine/hooks@7.2.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-/a49eGCkTrN/zHinlowbapF3/NKSshonBy2qX/8k21dBr13I4RSvxoWWhmrRrLwbSg0sY/p/NceOenC4irAIrw==}
     peerDependencies:
@@ -4757,10 +4731,6 @@ packages:
       abab: 2.0.6
       whatwg-mimetype: 2.3.0
       whatwg-url: 8.7.0
-
-  /dayjs@1.11.10:
-    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
-    dev: false
 
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}

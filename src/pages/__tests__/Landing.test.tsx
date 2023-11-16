@@ -46,7 +46,6 @@ test("Landing page renders correctly!", async () => {
 
 test("Images show from the content", async () => {
   mockFetchData.mockResolvedValue(mockData as never);
-  console.log("Mock Data: ", mockFetchData.getMockImplementation);
   render(<Landing />);
   await waitFor(() => {
     expect(mockFetchData).toBeCalled();
